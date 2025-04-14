@@ -1,0 +1,19 @@
+version: "v2.33.1-desktop.1"
+services:
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: miniappdb
+    ports:
+      - "5432:5432"
